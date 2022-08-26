@@ -14,6 +14,14 @@ const CreateEventForm = () => {
             [e.target.name]: e.target.value
         })
     }
+    const dateChange = (e) => {
+        let date = new Date(e.target.value).toDateString()
+        let newDate = date[2] + " " + date[1];
+        setformValues({
+            ...formValues,
+            eventDate : newDate
+        })
+    }
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -27,18 +35,18 @@ const CreateEventForm = () => {
           <div className="row" style={{ display: 'flex', justifyContent:'space-between'}}>
               <h3 style={{ color: 'grey' }} >Create Event</h3>
              
-                  <div className="col-sm-12 col-md-5">
+                  <div className="col-sm-12 col-md-5 my-3">
                       <input className='form-control' onChange={(e)=> onChange(e)} value={formValues.name}  name='name' id='name' type='text' placeholder='Event Name' required />
                       <input className='form-control' onChange={(e) => onChange(e)} name='banner' id='banner' type='text' placeholder='Banner'  required value={formValues.banner} />
                       <input className='form-control' onChange={(e)=> onChange(e)} value={formValues.short_desc} name='short_desc' id='short_desc' type='text' placeholder='Short Description' required maxLength={100} />
                       <textarea className='form-control' onChange={(e) => onChange(e)} value={formValues.long_desc} name='long_desc' style={{ height: '45%', width: '100%', margin: '10px auto' }} placeholder={'Please describe the event'} />
                   </div>
-                  <div className="col-sm-12 col-md-5">
+                  <div className="col-sm-12 col-md-5 my-3">
                       <select className='form-select' onChange={(e)=> onChange(e)} name='lang' id='lang' defaultValue={formValues.lang} >
                           <option value='english' >English</option>
                           <option value='hindi' >Hindi</option>
                       </select>
-                      <input className='form-control' onChange={(e) => onChange(e)} value={formValues.eventDate} name='eventDate' id='eventDate' type='date' placeholder='Choose Date' required />
+                      <input className='form-control' onChange={(e) => dateChange(e)} value={formValues.eventDate} name='eventDate' id='eventDate' type='date' placeholder='Choose Date' required />
                       <input className='form-control' onChange={(e) => onChange(e)} value={formValues.eventTime} name='eventTime' id='eventTime' type='time' placeholder='Event Time' required />
                       <input className='form-control' onChange={(e) => onChange(e)} value={formValues.link} name='link' type='text' placeholder='Event Link' required minLength={7} />
                   </div>

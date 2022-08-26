@@ -28,7 +28,7 @@ const EventList = () => {
           {/* MAP THROUGH EVENTS HERE */}
           {allEvents.map(event => {
             return (
-              <div className="col-md-3 col-sm-12 mt-2" >
+              <div className="col-md-4 col-sm-12 mt-2" >
                 <EventCard event={event} />
               </div>
             )

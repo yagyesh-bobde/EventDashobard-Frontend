@@ -6,20 +6,6 @@ const Preview = () => {
   const { formValues, createEvent } = useContext(eventContext);
 
   const navigate = useNavigate();
-  let Date = ''
-
-  useEffect(()=>{
-    getDate()
-  }, [])
-
-  const getDate = () => {
-    if (formValues.eventDate){
-      let date = new Date(formValues.eventDate).toDateString().split(" ")
-      Date = date[2] + " " + date[1]
-    } else {
-      Date = formValues.eventDate
-    }
-  }
 
   const onSubmit = (e) => {
     e.preventDefault()
@@ -50,7 +36,7 @@ const Preview = () => {
           <div className="row">
             <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
              
-              <p> <i className="fa-solid fa-calendar d-inline mx-2 text-primary"></i><span style={{ fontWeight: '700' }}>{Date}</span></p>
+              <p> <i className="fa-solid fa-calendar d-inline mx-2 text-primary"></i><span style={{ fontWeight: '700' }}>{formValues.eventDate}</span></p>
             </div>
             <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems:'center'}}>
               <p><i className="fa-solid fa-clock d-inline mx-2 text-primary"></i><span style={{ fontWeight: '700' }}>{formValues.eventTime}</span></p>

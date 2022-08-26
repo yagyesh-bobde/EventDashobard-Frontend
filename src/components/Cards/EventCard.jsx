@@ -12,7 +12,7 @@ const EventCard = ({ event }) => {
     deleteEvent(event._id)
   }
   return (
-    <div className="card my-2">
+    <div className="btn card my-2" stlye={{ borderRadius: "20px"}}>
       <img style={{ width:'100%',height:'150px', maxHeight:'150px'}} src={event.banner} className="card-img-top" alt="..."/>
         <div className="card-body">
         <div className="card-title" style={{ justifyContent: "space-between" }}>
