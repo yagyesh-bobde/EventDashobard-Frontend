@@ -23,7 +23,7 @@ const Dashboard = () => {
         <div className="col-9 ">
           <header className='home_header'>
             <h2>Welcome, Ravi</h2>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas aliquid dolore eius nemo unde. Commodi expedita ea sed fugiat eius.</p>
+            <p>This is your personal dashboard, where you can manage all your events!</p>
           </header>
           <main className='event_list'>
             <EventList />
