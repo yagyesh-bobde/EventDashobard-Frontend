@@ -1,5 +1,5 @@
 import React from 'react'
-import { Dashboard , Preview , CreateEvent} from './pages/index'
+import { Dashboard, Preview, CreateEvent, PreviewOneEvent } from './pages/index'
 import {
   Routes, 
   Route
@@ -15,6 +15,7 @@ const App = () => {
         <Routes>
           <Route path='/' exact element={<Dashboard />} />
           <Route path='/preview' exact element={<Preview />} />
+          <Route path='/preview/:id' exact element={<PreviewOneEvent />} />
           <Route path='/createEvent' exact element={<CreateEvent />} />
         </Routes>
       </EventState>

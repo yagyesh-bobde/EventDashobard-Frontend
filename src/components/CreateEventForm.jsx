@@ -14,14 +14,6 @@ const CreateEventForm = () => {
             [e.target.name]: e.target.value
         })
     }
-    const dateChange = (e) => {
-        let date = new Date(e.target.value).toDateString()
-        let newDate = date[2] + " " + date[1];
-        setformValues({
-            ...formValues,
-            eventDate : newDate
-        })
-    }
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -46,7 +38,7 @@ const CreateEventForm = () => {
                           <option value='english' >English</option>
                           <option value='hindi' >Hindi</option>
                       </select>
-                      <input className='form-control' onChange={(e) => dateChange(e)} value={formValues.eventDate} name='eventDate' id='eventDate' type='date' placeholder='Choose Date' required />
+                      <input className='form-control' onChange={(e) => onChange(e)} value={formValues.eventDate} name='eventDate' id='eventDate' type='date' placeholder='Choose Date' required />
                       <input className='form-control' onChange={(e) => onChange(e)} value={formValues.eventTime} name='eventTime' id='eventTime' type='time' placeholder='Event Time' required />
                       <input className='form-control' onChange={(e) => onChange(e)} value={formValues.link} name='link' type='text' placeholder='Event Link' required minLength={7} />
                   </div>

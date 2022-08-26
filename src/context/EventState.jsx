@@ -56,7 +56,7 @@ const EventState = (props) => {
     const getOneEvent = async(id) => {
         const event = allEvents.filter(item => item._id === id)
         console.log(event)
-        setoneEvent(event)
+        setoneEvent(event[0])
     //     const response = await fetch(`${host}/api/events/${id}`)
     //     const json = await response.json()
     //     if (json.success) {

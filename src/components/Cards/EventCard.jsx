@@ -1,18 +1,22 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
+import {  useNavigate } from 'react-router-dom';
 import { eventContext } from '../../context/EventState'
 
 const EventCard = ({ event }) => {
-  const { editEvent, deleteEvent } = useContext(eventContext);
-
-  const [showEditModal, setshowEditModal] = useState(false)
-  const [showDeleteModal, setshowDeleteModal] = useState(false)
-
+  const { editEvent, deleteEvent, getOneEvent } = useContext(eventContext);
+  const navigate = useNavigate()
 
   const onDelete = () => {
     deleteEvent(event._id)
   }
+
+  const seePreview = () => {
+    getOneEvent(event._id)
+    navigate(`/preview/${event._id}`)
+  }
+
   return (
-    <div className="btn card my-2" stlye={{ borderRadius: "20px"}}>
+    <div onClick={seePreview} className="btn card my-2 event_card" >
       <img style={{ width:'100%',height:'150px', maxHeight:'150px'}} src={event.banner} className="card-img-top" alt="..."/>
         <div className="card-body">
         <div className="card-title" style={{ justifyContent: "space-between" }}>
@@ -29,7 +33,7 @@ const EventCard = ({ event }) => {
         <li className="list-group-item"><b>Language: </b>{event.lang}<br /><b>{'Date & Time :'} </b>{`${event.eventTime}`}</li>
           <li className="list-group-item"></li>
         </ul>
-        <div className="card-footer d-flex">
+        <div className="card-footer place-center">
           <a href={`${event.link}`} className="card-link">Event Link
           <i className="fa-solid fa-up-right-from-square d-inline mx-2"></i>
           </a>
