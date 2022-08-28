@@ -42,7 +42,7 @@ const Preview = () => {
               <p><i className="fa-solid fa-clock d-inline mx-2 text-primary"></i><span style={{ fontWeight: '700' }}>{formValues.eventTime}</span></p>
             </div>
             <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems:'center'}}>
-              <p> <i className="fa-solid fa-video d-inline mx-2 text-primary"></i><a href={formValues.link} style={{ fontWeight: '700', textDecoration:'none !important'}}>Link</a></p>
+              <p> <i className="fa-solid fa-video d-inline mx-2 text-primary"></i><a target='_blank' href={formValues.link} style={{ fontWeight: '700', textDecoration:'none !important'}}>Link</a></p>
             </div>
             <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems:'center'}}>
               <p><i className="fa-solid fa-dollar-sign d-inline mx-2 text-primary"></i><span className='text-success' style={{ fontWeight:'700'}}>Free</span></p>

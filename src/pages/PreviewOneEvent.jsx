@@ -6,10 +6,13 @@ import img from '../assets/bg-1.jpg'
 
 
 const PreviewOneEvent = () => {
-    const { oneEvent } = useContext(eventContext);
+    const { oneEvent, getOneEvent } = useContext(eventContext);
 
     const navigate = useNavigate();
-
+    const goEdit = () => {
+        getOneEvent(oneEvent._id)
+        navigate(`/edit/${oneEvent._id}`)
+    }
     return (
         <div className='preview'>
             <div className="row img">
@@ -39,7 +42,7 @@ const PreviewOneEvent = () => {
                                 <p><i className="fa-solid fa-clock d-inline mx-2 text-primary"></i><span style={{ fontWeight: '700' }}>{oneEvent.eventTime}</span></p>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
-                                <p> <i className="fa-solid fa-video d-inline mx-2 text-primary"></i><a href={oneEvent.link} style={{ fontWeight: '700', textDecoration: 'none !important' }}>Link</a></p>
+                                <p> <i className="fa-solid fa-video d-inline mx-2 text-primary"></i><a target='blank' href={oneEvent.link} style={{ fontWeight: '700', textDecoration: 'none !important' }}>Link</a></p>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
                                 <p><i className="fa-solid fa-dollar-sign d-inline mx-2 text-primary"></i><span className='text-success' style={{ fontWeight: '700' }}>Free</span></p>
@@ -58,6 +61,11 @@ const PreviewOneEvent = () => {
                 <div className="col-3">
                     <button onClick={() => navigate('/')} type='button' className='btn btn-primary text-light'>
                         {'<<'} Back {'<<'}
+                    </button>
+                </div>
+                <div className="col-3">
+                    <button type='button' className='btn d-flex' onClick={goEdit} >
+                        <p>Edit <i className="fa-solid fa-pen-to-square mx-1 d-inline"></i></p>
                     </button>
                 </div>
 

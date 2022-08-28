@@ -55,7 +55,6 @@ const EventState = (props) => {
     // TODO: Read One Event
     const getOneEvent = async(id) => {
         const event = allEvents.filter(item => item._id === id)
-        console.log(event)
         setoneEvent(event[0])
     //     const response = await fetch(`${host}/api/events/${id}`)
     //     const json = await response.json()
@@ -72,29 +71,29 @@ const EventState = (props) => {
 
     const editEvent = async (id ) => {
         // TODO: API CALL FOR EDITING A NOTE
-
+        const event = {...oneEvent}
         const response = await fetch(`${host}/api/tasks/updateEvent/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ ...formValues }) // body data type must match "Content-Type" header
+            body: JSON.stringify({ ...event }) // body data type must match "Content-Type" header
         });
         const json = await response.json()
 
 
         //* EDIT IN THE NOTES
         if (json.success) {
-            const indexFind = allEvents.findIndex((note) => id === note._id)
-            let newNotes = allEvents;
-            newNotes[indexFind] = {
-                _id: id,
-                ...formValues
-            }
-            setallEvents(newNotes)
-            alert("Edited note successfully", "success")
+            // const indexFind = allEvents.findIndex((note) => id === note._id)
+            // let newNotes = allEvents;
+            // newNotes[indexFind] = {
+            //     _id: id,
+            //     ...formValues
+            // }
+            // setallEvents(newNotes)
+            alert("Edited note successfully")
         } else {
-            alert(json.error, "danger")
+            alert(json.error)
         }
     }
     // TODO: Delete an event
@@ -114,15 +113,15 @@ const EventState = (props) => {
         if (json.success) {
             let newNotes = allEvents.filter((note) => note._id !== id)
             setallEvents(newNotes)
-            alert("Deleted note successfully", "success")
+            alert("Deleted note successfully")
         } else {
-            alert(json.error, "danger")
+            alert(json.error)
         }
     }
 
 
   return (
-      <eventContext.Provider value={{ allEvents, oneEvent, getEvents, createEvent, getOneEvent, editEvent, deleteEvent, formValues, setformValues }}>
+      <eventContext.Provider value={{ allEvents, oneEvent, getEvents, createEvent, getOneEvent, editEvent, deleteEvent, formValues, setformValues, setoneEvent }}>
         {props.children}
     </eventContext.Provider>
   )

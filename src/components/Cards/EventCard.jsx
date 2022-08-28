@@ -15,10 +15,12 @@ const EventCard = ({ event }) => {
     navigate(`/preview/${event._id}`)
   }
 
+
+
   return (
-    <div onClick={seePreview} className="btn card my-2 event_card" >
+    <div  className=" card my-2 event_card" >
       <img style={{ width:'100%',height:'150px', maxHeight:'150px'}} src={event.banner} className="card-img-top" alt="..."/>
-        <div className="card-body">
+      <div className="btn card-body" onClick={seePreview}>
         <div className="card-title" style={{ justifyContent: "space-between" }}>
           <div className="" >
             {event.name} 
@@ -34,13 +36,11 @@ const EventCard = ({ event }) => {
           <li className="list-group-item"></li>
         </ul>
         <div className="card-footer place-center">
-          <a href={`${event.link}`} className="card-link">Event Link
+          <a href={`${event.link}`} target="_blank" className="card-link">Event Link
           <i className="fa-solid fa-up-right-from-square d-inline mx-2"></i>
           </a>
         <div className="place-center" style={{ alignContent: 'right' }}>
-          {/* <button type='button' className='btn' onClick={()=> showEditModal(true)} >
-            <i className="fa-solid fa-pen-to-square mx-1"></i>
-          </button> */}
+
           <button type='button' className='btn' data-bs-toggle="modal" data-bs-target="#deleteModal">
             <i className="fa-solid fa-trash "></i>
           </button>
